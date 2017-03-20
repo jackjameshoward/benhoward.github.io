@@ -6,8 +6,8 @@
 }
 
 svg{
-  height: inherit;
-  width: auto;
+  height: auto;
+  width: inherit;
   display: block;
   /*margin : auto;*/
   box-sizing: border-box;
