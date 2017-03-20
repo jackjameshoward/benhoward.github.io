@@ -6,11 +6,8 @@
 }
 
 svg{
-  height: auto;
-  width: inherit;
-  display: block;
-  /*margin : auto;*/
-  box-sizing: border-box;
+  height: 1000px;
+  width: 1000px;
 }
 .page {
     height: 100vh;
