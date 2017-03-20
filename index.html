@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-toggleable-sm navbar-inverse fixed-top" style="background-color: #C4226F;">
+  <nav class="navbar navbar-toggleable-sm navbar-inverse fixed-top" style="background-color: #42ab9e;">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
       data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
       aria-label="Toggle navigation">
@@ -52,7 +52,7 @@
       });
 
     var tree = d3.tree()
-      .size([360, 500])
+      .size([360, 200])
       .separation(function(a, b) {
         return (a.parent == b.parent ? 1 : 2) / a.depth;
       });
