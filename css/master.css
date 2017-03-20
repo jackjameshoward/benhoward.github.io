@@ -5,6 +5,10 @@
     margin: 0 0;
 }
 
+svg{
+  height: 100%;
+  width: auto;
+}
 .page {
     height: 100vh;
 }

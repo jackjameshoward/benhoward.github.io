@@ -35,7 +35,8 @@
   <div class="page">
     <div class="page-1">
       <h1>Hello World</h1>
-      <svg width="1000" height="1000"></svg>
+      <svg ></svg>
+      <!-- width="1000" height="1000" -->
     </div>
   </div>
   <!-- page-1 -->
@@ -52,7 +53,7 @@
       });
 
     var tree = d3.tree()
-      .size([360, 200])
+      .size([400, 400])
       .separation(function(a, b) {
         return (a.parent == b.parent ? 1 : 2) / a.depth;
       });
