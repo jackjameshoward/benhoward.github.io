@@ -7,9 +7,10 @@
 
 svg{
   height: inherit;
-  width: inherit;
+  width: auto;
   display: block;
-  margin : auto;
+  /*margin : auto;*/
+  box-sizing: border-box;
 }
 .page {
     height: 100vh;
