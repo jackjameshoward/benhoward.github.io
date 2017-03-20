@@ -24,9 +24,9 @@
     height: 100%;
     background-color: #c6aa36;
 }
-.svg {
-  width: 100%;
-  height: auto;
+#hi-diagram{
+  width: 80vw;
+  height: 80vh;
 }
 
 /*Tree Structure*/
