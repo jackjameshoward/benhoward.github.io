@@ -6,8 +6,10 @@
 }
 
 svg{
-  height: 80vh;
+  height: 80vw;
   width: 80vh;
+  display: block;
+  margin : auto;
 }
 .page {
     height: 100vh;
