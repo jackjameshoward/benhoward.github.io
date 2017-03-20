@@ -6,8 +6,8 @@
 }
 
 svg{
-  height: 80vw;
-  width: 80vh;
+  height: inherit;
+  width: inherit;
   display: block;
   margin : auto;
 }
