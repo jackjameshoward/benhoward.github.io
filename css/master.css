@@ -8,8 +8,8 @@
 .tree-svg{
   height: 80vh;
   width: 80vw;
-  display: block;
-  margin: auto;
+  /*display: block;
+  margin: auto;*/
 }
 .page {
     padding-top: 48px;
