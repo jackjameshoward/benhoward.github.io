@@ -17,8 +17,8 @@
       return (a.parent == b.parent ? 1 : 2) / a.depth;
     });
 
-  d3.json("flare.json", function(error, data) {
-    if (error) throw error;
+  d3.json("flare.json", function(json) {
+    // if (error) throw error;
 
     var root = json;
 
