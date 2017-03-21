@@ -43,8 +43,8 @@
   <!-- page-1 -->
   <script>
     var svg = d3.select("svg"),
-      width = +svg.style("width"),
-      height = +svg.style("height"),
+      width = +svg.style("width").replace('px', ''),
+      height = +svg.style("height").replace('px', ''),
       g = svg.append("g").attr("transform", "translate(" + (width / 2 + 40) +
         "," + (height / 2 + 90) + ")");
       console.log(d3.select("svg").style("width").replace('px', ''));
