@@ -20,7 +20,7 @@
   d3.json("flare.json", function(error, data) {
     if (error) throw error;
 
-    var root = tree(data);
+    var root = json;
 
     var link = g.selectAll(".link")
       .data(root.descendants().slice(1))
