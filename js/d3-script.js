@@ -22,16 +22,16 @@
 
     var root = json;
 
-    var link = g.selectAll(".link")
-      .data(root.descendants().slice(1))
-      .enter().append("path")
-      .attr("class", "link")
-      .attr("d", function(d) {
-        return "M" + project(d.x, d.y) +
-          "C" + project(d.x, (d.y + d.parent.y) / 2) +
-          " " + project(d.parent.x, (d.y + d.parent.y) / 2) +
-          " " + project(d.parent.x, d.parent.y);
-      });
+    // var link = g.selectAll(".link")
+    //   .data(root.descendants().slice(1))
+    //   .enter().append("path")
+    //   .attr("class", "link")
+    //   .attr("d", function(d) {
+    //     return "M" + project(d.x, d.y) +
+    //       "C" + project(d.x, (d.y + d.parent.y) / 2) +
+    //       " " + project(d.parent.x, (d.y + d.parent.y) / 2) +
+    //       " " + project(d.parent.x, d.parent.y);
+    //   });
 
     var node = g.selectAll(".node")
       .data(root.descendants())
