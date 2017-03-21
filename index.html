@@ -35,16 +35,17 @@
   <div class="page">
     <div class="page-1">
       <h1>Hello World</h1>
-      <svg ></svg>
+      <svg class="tree-svg"></svg>
       <!-- width="1300" height="1300" -->
       <!--  -->
     </div>
   </div>
   <!-- page-1 -->
   <script>
+  d3.classed("foo bar", true);
     var svg = d3.select("svg"),
-      width = +svg.attr("width"),
-      height = +svg.attr("height"),
+      width = +svg.style("width"),
+      height = +svg.style("height"),
       g = svg.append("g").attr("transform", "translate(" + (width / 2 + 40) +
         "," + (height / 2 + 90) + ")");
       console.log(height);

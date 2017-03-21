@@ -5,8 +5,8 @@
     margin: 0 0;
 }
 
-svg{
-  height: 1200px;
+.tree-svg{
+  height: 1100px;
   width: 1200px;
   display: block;
   margin: auto;
