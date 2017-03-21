@@ -12,7 +12,7 @@
     });
 
   var tree = d3.tree()
-    .size([0 , 250])
+    .size([360 , 250])
     .separation(function(a, b) {
       return (a.parent == b.parent ? 1 : 2) / a.depth;
     });
@@ -20,7 +20,7 @@
   d3.csv("flare.csv", function(error, data) {
     if (error) throw error;
 
-    var root = tree(stratify(data));
+    var root = tree(d3.hierarchy(data));
 
     var link = g.selectAll(".link")
       .data(root.descendants().slice(1))
