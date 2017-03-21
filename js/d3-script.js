@@ -17,7 +17,7 @@
       return (a.parent == b.parent ? 1 : 2) / a.depth;
     });
 
-  d3.csv("flare.csv", function(error, data) {
+  d3.json("flare.json", function(error, data) {
     if (error) throw error;
 
     var root = tree(d3.hierarchy(data));
