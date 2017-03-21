@@ -5,12 +5,12 @@
     margin: 0 0;
 }
 
-/*svg{
-  height: 1060px;
-  width: 960px;
+svg{
+  height: 1200px;
+  width: 1200px;
   display: block;
   margin: auto;
-}*/
+}
 .page {
     height: 100%;
     width: 100vw;
