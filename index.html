@@ -47,8 +47,8 @@
       height = +svg.style("height"),
       g = svg.append("g").attr("transform", "translate(" + (width / 2 + 40) +
         "," + (height / 2 + 90) + ")");
-      console.log(height);
-      console.log(width);
+      console.log(d3.select("svg").style("width"));
+      console.log(d3.select("svg").style("height"));
 
     var stratify = d3.stratify()
       .parentId(function(d) {
