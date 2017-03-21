@@ -17,21 +17,21 @@
       return (a.parent == b.parent ? 1 : 2) / a.depth;
     });
 
-  d3.json("flare.json", function(json) {
-    // if (error) throw error;
+  d3.csv("flare.csv", function(error, data) {
+    if (error) throw error;
 
-    var root = json;
+    var root = tree(stratify(data));
 
-    // var link = g.selectAll(".link")
-    //   .data(root.descendants().slice(1))
-    //   .enter().append("path")
-    //   .attr("class", "link")
-    //   .attr("d", function(d) {
-    //     return "M" + project(d.x, d.y) +
-    //       "C" + project(d.x, (d.y + d.parent.y) / 2) +
-    //       " " + project(d.parent.x, (d.y + d.parent.y) / 2) +
-    //       " " + project(d.parent.x, d.parent.y);
-    //   });
+    var link = g.selectAll(".link")
+      .data(root.descendants().slice(1))
+      .enter().append("path")
+      .attr("class", "link")
+      .attr("d", function(d) {
+        return "M" + project(d.x, d.y) +
+          "C" + project(d.x, (d.y + d.parent.y) / 2) +
+          " " + project(d.parent.x, (d.y + d.parent.y) / 2) +
+          " " + project(d.parent.x, d.parent.y);
+      });
 
     var node = g.selectAll(".node")
       .data(root.descendants())
