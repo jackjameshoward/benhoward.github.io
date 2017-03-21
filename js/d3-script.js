@@ -12,7 +12,7 @@
     });
 
   var tree = d3.tree()
-    .size([360 , 250])
+    .size([0 , 250])
     .separation(function(a, b) {
       return (a.parent == b.parent ? 1 : 2) / a.depth;
     });
