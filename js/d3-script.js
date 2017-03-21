@@ -58,7 +58,7 @@
         return "rotate(" + (d.x < 180 ? d.x - 90 : d.x + 90) + ")";
       })
       .text(function(d) {
-        return d.id.attr("name")
+        return "jack";
       });
   });
 
