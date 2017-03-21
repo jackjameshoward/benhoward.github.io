@@ -17,10 +17,10 @@
       return (a.parent == b.parent ? 1 : 2) / a.depth;
     });
 
-  d3.json("flare.json", function(error, data) {
+  d3.csv("flare.csv", function(error, data) {
     if (error) throw error;
 
-    var root = d3.hierarchy(data);
+    var root = tree(stratify(data));
 
     var link = g.selectAll(".link")
       .data(root.descendants().slice(1))
@@ -58,7 +58,7 @@
         return "rotate(" + (d.x < 180 ? d.x - 90 : d.x + 90) + ")";
       })
       .text(function(d) {
-        return "flare";
+        return d.id.substring(d.id.lastIndexOf(".") + 1);
       });
   });
 
