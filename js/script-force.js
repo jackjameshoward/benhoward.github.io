@@ -45,6 +45,9 @@ d3.json("data.json", function(error, graph) {
 
     node.append("title")
         .text(function(d) { return d.id; });
+    
+    node.append("text")
+        .text(function(d) { return d.id; });
 
     simulation
         .nodes(nodes)
@@ -85,14 +88,12 @@ function dragended(d) {
 }
 
 
-function mouseover(d) {
+function mouseover() {
   tempColor = this.style.fill;
     d3.select(this).transition()
         .duration(750)
         .attr("r", 10)
-        .style("fill", "lightsteelblue");;
-    d3.select(this).append("text")
-        .text(function(d) { return d.id; });
+        .style("fill", "lightsteelblue");
 }
 function mouseout() {
     d3.select(this).transition()
