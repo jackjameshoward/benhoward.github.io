@@ -35,7 +35,7 @@ d3.json("data.json", function(error, graph) {
       .data(nodes)
       .enter().append("circle")
         .attr("r", 5)
-        .attr("fill", function(d) { return color(d.group); })
+        .attr("fill", function(d) { return color(d.type); })
         .call(d3.drag()
             .on("start", dragstarted)
             .on("drag", dragged)
@@ -91,6 +91,8 @@ function mouseover() {
         .duration(750)
         .attr("r", 10)
         .style("fill", "lightsteelblue");;
+    d3.select(this).append("div")
+        .text(function(this) { return this.id; });
 }
 function mouseout() {
     d3.select(this).transition()
