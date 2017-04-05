@@ -48,7 +48,9 @@ d3.json("data.json", function(error, graph) {
     
     node.append("text")
         .text(function(d) { return d.id; })
-        .attr("fill", function(d) { return color(d.type); });
+        .attr("fill", function(d) { return color(d.type); })
+        .attr("text-anchor", "end")
+        .attr("font-size", "1em");
 
     simulation
         .nodes(nodes)
