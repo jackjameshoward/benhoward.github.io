@@ -47,7 +47,8 @@ d3.json("data.json", function(error, graph) {
         .text(function(d) { return d.id; });
     
     node.append("text")
-        .text(function(d) { return d.id; });
+        .text(function(d) { return d.id; })
+        .attr("fill", palette.gray);
 
     simulation
         .nodes(nodes)
