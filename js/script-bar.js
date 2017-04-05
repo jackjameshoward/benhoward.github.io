@@ -11,15 +11,15 @@ var height = 400,
     barWidth = 50,
     barOffset = 5;
 var tempColor;
-var yScale = d3.scale.linear()
+var yScale = d3.scaleLinear()
     .domain([0, d3.max(bardata)])
     .range([0, height])
 
-var xScale = d3.scale.ordinal()
+var xScale = d3.scaleBand()
     .domain(d3.range(0, bardata.length))
-    .rangeBands([0, width])
+    .range([0, width])
 
-var colors = d3.scale.linear()
+var colors = d3.scaleLinear()
     .domain([0, bardata.length * 0.33, bardata.length * 0.66, bardata.length])
     .range(['#B58929', '#C61C6F', '#268BD2', '#85992C'])
 
@@ -39,7 +39,7 @@ var myChart5 = d3.select('#chart-1')
     .selectAll("rect")
     .data(bardata)
     .enter().append("rect")
-    .attr('width', xScale.rangeBand())
+    .attr('width', xScale.bandwidth())
     .attr('x', function(d, i) {
         return xScale(i);
     })
@@ -83,4 +83,4 @@ myChart5.transition()
         return i * 20
     })
     .duration(1000)
-    .ease('elastic')
+    .ease(d3.easeElastic)
