@@ -92,7 +92,7 @@ function mouseover() {
         .attr("r", 10)
         .style("fill", "lightsteelblue");;
     d3.select(this).append("div")
-        .text(function(this) { return this.id; });
+        .text(function(d) { return d.id; });
 }
 function mouseout() {
     d3.select(this).transition()
