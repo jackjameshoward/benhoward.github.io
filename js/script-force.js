@@ -91,7 +91,7 @@ function mouseover(d) {
         .duration(750)
         .attr("r", 10)
         .style("fill", "lightsteelblue");;
-    d3.select(this).append("div")
+    d3.select(this).append("text")
         .text(function(d) { return d.id; });
 }
 function mouseout() {
