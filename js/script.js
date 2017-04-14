@@ -1,3 +1,8 @@
+// Disable scrolling.
+document.ontouchmove = function (e) {
+  e.preventDefault();
+}
+
 // Where is the force chart attached in the DOM
 var base = d3.select("#chart-1");
 
