@@ -7,7 +7,7 @@ document.ontouchmove = function (e) {
 var base = d3.select("#chart-1");
 
 // Define color palette
-var color = d3.schemeCategory10;
+var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 // Map node types to integers
 var typeEnum = {"root": 0, "topic": 1, "keyword": 2};
