@@ -35,7 +35,7 @@ d3.json("data.json", function(d) {
         .attr("class", "links")
         .selectAll("line").data(links)
         .enter().append("line")
-          .attr("stroke-width", function(d) { return Math.round(d.weight * 5); });
+          .attr("stroke-width", function(d) { return Math.round(d.weight * 10); });
 
     // Create the nodes group, creates a g tag for each node
     var node = chart.append("g")
@@ -66,7 +66,7 @@ d3.json("data.json", function(d) {
 
     // Create the simulation
     var forceLink = d3.forceLink(links)
-        .strength(function(d) { return 1.0/d.weight; })
+        .strength(function(d) { return d.weight; })
     var simulation = d3.forceSimulation(nodes)
         .force("charge", d3.forceManyBody())
         .force("link", forceLink)
