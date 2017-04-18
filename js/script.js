@@ -33,7 +33,7 @@ d3.json("data.json", function(d) {
     // Create the links group
     var link = chart.append("g")
         .attr("class", "links")
-        .strength(function(d) { return d.weight; })
+        .attr("strength", function(d) { return d.weight; })
         .selectAll("line").data(links)
         .enter().append("line")
           .attr("stroke-width", function(d) { return Math.round(d.weight * 5); });
