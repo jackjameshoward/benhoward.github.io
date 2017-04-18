@@ -66,8 +66,7 @@ d3.json("data.json", function(d) {
 
     // Create the simulation
     var forceLink = d3.forceLink(links)
-        .strength(function(d) { return d.weight; })
-        .distance(function(d) { return 1.0/d.weight; })
+        .strength(function(d) { return 1.0/d.weight; })
     var simulation = d3.forceSimulation(nodes)
         .force("charge", d3.forceManyBody())
         .force("link", forceLink)
