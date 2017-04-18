@@ -49,7 +49,7 @@ d3.json("data.json", function(d) {
     // Create the cirecle inside the the node g tag
     node.append("circle")
         .attr("r", 5);
-        //.style("fill", function(d) { return color(d.type); })
+        .style("fill", function(d) { return color(d.type); })
 
     // Create svg text element inside the node g tag
     node.append("text")
