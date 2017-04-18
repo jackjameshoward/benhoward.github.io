@@ -3,12 +3,13 @@ body {
     overflow: hidden;
     margin: 0;
     font-size: 14px;
-    font-family: "Helvetica Neue", Helvetica;
+    font-family:'Josefin Sans' "Helvetica Neue", Helvetica;
     box-sizing: border-box;
 }
 
 .navbar{
-  background-color: #42ab9e;
+  /*background: linear-gradient(141deg, #FF9E21 0%, #FF8A21 51%, #FF6E21 75%);*/
+  background: linear-gradient(141deg, #FF8F21 0%, #FFA021 51%, #FFAE21 75%);
 }
 
 .navbar-brand{
@@ -45,12 +46,12 @@ body {
     margin: auto;
 }
 
-.node circle {
-    fill: #42ab9e;
-}
+/*.node circle {
+    fill: #FF9E21;
+}*/
 
 .node text {
-    font: 20px sans-serif;
+    font: 20px 'Josefin Sans';
 }
 
 .links line {

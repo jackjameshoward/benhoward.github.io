@@ -1,6 +1,6 @@
 // Disable scrolling.
-document.ontouchmove = function (e) {
-  e.preventDefault();
+document.ontouchmove = function(e) {
+    e.preventDefault();
 }
 
 // Where is the force chart attached in the DOM
@@ -20,6 +20,15 @@ d3.json("data.json", function(d) {
     nodes = d.nodes
     links = d.links
 
+    // Set color scale
+    var user_q = "#77E31D"
+    var topic = d3.scaleLinear()
+        .domain([0, nodes.length * 0.5, nodes.length])
+        .range(["#5026AF", "#5E23AD", "#6F20AB"])
+    var keyword = d3.scaleLinear()
+        .domain([0, nodes.length * 0.5, nodes.length])
+        .range(["#FF8F21", "#FFA021", "#FFAE21"])
+
     // Create the svg
     var chart = base.append("svg")
         .attr("class", "img-fluid");
@@ -36,8 +45,9 @@ d3.json("data.json", function(d) {
         .selectAll("g").data(nodes)
         .enter().append("g")
         .attr("class", "node")
-        .on("click", mouseover)
-        .on("mouseout", mouseout)
+        .on("click", clicked)
+        // .on("mouseover", mouseover)
+        // .on("mouseout", mouseout)
         .call(d3.drag()
             .on("start", dragstarted)
             .on("drag", dragged)
@@ -45,7 +55,17 @@ d3.json("data.json", function(d) {
 
     // Create the cirecle inside the the node g tag
     node.append("circle")
-        .attr("r", 5);
+        .attr("r", 5)
+        // .attr("r",function(d,i) {return links.filter(function(p){return p.source == i}).length *1.5})
+        .attr("fill", function(d, i) {
+            if (d.type == "keyword") {
+                return keyword(i);
+            } else if (d.type == "topic") {
+                return topic(i);
+            } else {
+                return user_q;
+            }
+        });
 
     // Create svg text element inside the node g tag
     node.append("text")
@@ -104,34 +124,31 @@ d3.json("data.json", function(d) {
         d.fx = null;
         d.fy = null;
     }
+    var tempi;
 
-    function mouseover() {
-        tempColor = this.style.fill;
+    function clicked(d, i) {
         var sel = d3.select(this);
-
+        var sel_prev = d3.select(node._groups[0][tempi]);
         sel.moveToFront();
-
+        if (tempi != i) {
+            sel_prev.transition()
+                .duration(500)
+                .select("circle")
+                .attr("r", 5);
+            sel_prev.transition()
+                .duration(750)
+                .select("text")
+                .style("visibility", "hidden");
+            tempi = i
+        }
         sel.select("circle").transition()
-            .duration(750)
+            .duration(500)
             .attr("r", 10)
-            .style("fill", "lightsteelblue");
+            .attr('fill-opacity', 0.2);
 
         sel.select("text").transition()
             .duration(750)
             .style("visibility", "visible");
-    }
-
-    function mouseout() {
-        var sel = d3.select(this);
-
-        sel.select("circle").transition()
-            .duration(750)
-            .attr("r", 5)
-            .style("fill", tempColor);
-
-        sel.select("text").transition()
-            .duration(750)
-            .style("visibility", "hidden");
     }
 
     function resize() {
