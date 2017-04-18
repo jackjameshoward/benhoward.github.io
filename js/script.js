@@ -10,7 +10,7 @@ var base = d3.select("#chart-1");
 var color = d3.scale.category10();
 
 // Map node types to integers
-var typeEnum = {"root": 0, "topic": 1, "keyword": 2}
+var typeEnum = {"root": 0, "topic": 1, "keyword": 2};
 
 // Function needed to bring the text to the front of the Node group
 d3.selection.prototype.moveToFront = function() {
@@ -51,8 +51,8 @@ d3.json("data.json", function(d) {
 
     // Create the cirecle inside the the node g tag
     node.append("circle")
-        .attr("r", 5);
-        .style("fill", function(d) { return color(typeEnum[d.type]); })
+        .attr("r", 5)
+        .style("fill", function(d) { return color(typeEnum[d.type]); });
 
     // Create svg text element inside the node g tag
     node.append("text")
