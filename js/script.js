@@ -7,7 +7,7 @@ document.ontouchmove = function (e) {
 var base = d3.select("#chart-1");
 
 // Define color palette
-var color = d3.scale.category10();
+//var color = d3.scale.category10();
 
 // Function needed to bring the text to the front of the Node group
 d3.selection.prototype.moveToFront = function() {
