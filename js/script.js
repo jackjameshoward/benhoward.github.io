@@ -6,12 +6,6 @@ document.ontouchmove = function(e) {
 // Where is the force chart attached in the DOM
 var base = d3.select("#chart-1");
 
-// Define color palette
-var color = d3.scaleOrdinal(d3.schemeCategory10);
-
-// Map node types to integers
-var typeEnum = {"root": 0, "topic": 1, "keyword": 2};
-
 // Function needed to bring the text to the front of the Node group
 d3.selection.prototype.moveToFront = function() {
     return this.each(function() {
@@ -53,8 +47,6 @@ d3.json("data.json", function(d) {
         .enter().append("g")
         .attr("class", "node")
         .on("click", clicked)
-        // .on("mouseover", mouseover)
-        // .on("mouseout", mouseout)
         .call(d3.drag()
             .on("start", dragstarted)
             .on("drag", dragged)
@@ -63,7 +55,6 @@ d3.json("data.json", function(d) {
     // Create the cirecle inside the the node g tag
     node.append("circle")
         .attr("r", 5)
-
         // .attr("r",function(d,i) {return links.filter(function(p){return p.source == i}).length *1.5})
         .attr("fill", function(d, i) {
             if (d.type == "keyword") {
@@ -85,11 +76,9 @@ d3.json("data.json", function(d) {
         .style("visibility", "hidden");
 
     // Create the simulation
-    var forceLink = d3.forceLink(links)
-        .strength(function(d) { return d.weight; })
     var simulation = d3.forceSimulation(nodes)
         .force("charge", d3.forceManyBody())
-        .force("link", forceLink)
+        .force("link", d3.forceLink(links))
         .on("tick", ticked);
     // Set size of SVG and ceter the force layout
     resize();
