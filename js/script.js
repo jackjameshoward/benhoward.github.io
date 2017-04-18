@@ -121,7 +121,7 @@ d3.json("data.json", function(d) {
         sel.select("circle").transition()
             .duration(750)
             .attr("r", 10)
-            .style("fill", "lightsteelblue");
+            .style("fill", d3.color(tempColor).darker());
 
         sel.select("text").transition()
             .duration(750)
@@ -134,7 +134,7 @@ d3.json("data.json", function(d) {
         sel.select("circle").transition()
             .duration(750)
             .attr("r", 5)
-            .style("fill", tempColor);
+            .style("fill", function(d) { return color(typeEnum[d.type]); });
 
         sel.select("text").transition()
             .duration(750)
