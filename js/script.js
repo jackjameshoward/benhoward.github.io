@@ -33,7 +33,6 @@ d3.json("data.json", function(d) {
     // Create the links group
     var link = chart.append("g")
         .attr("class", "links")
-        .attr("strength", function(d) { return d.weight; })
         .selectAll("line").data(links)
         .enter().append("line")
           .attr("stroke-width", function(d) { return Math.round(d.weight * 5); });
@@ -66,9 +65,11 @@ d3.json("data.json", function(d) {
         .style("visibility", "hidden");
 
     // Create the simulation
+    var forceLink = d3.forceLink(links)
+        .strength(function(d) { return d.weight; })
     var simulation = d3.forceSimulation(nodes)
         .force("charge", d3.forceManyBody())
-        .force("link", d3.forceLink(links))
+        .force("link", forceLink)
         .on("tick", ticked);
     // Set size of SVG and ceter the force layout
     resize();
