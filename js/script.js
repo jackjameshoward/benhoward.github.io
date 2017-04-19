@@ -21,13 +21,9 @@ d3.json("data.json", function(d) {
     links = d.links
 
     // Set color scale
-    var user_q = "#77E31D"
-    var topic = d3.scaleLinear()
-        .domain([0, nodes.length * 0.5, nodes.length])
-        .range(["#5026AF", "#5E23AD", "#6F20AB"])
-    var keyword = d3.scaleLinear()
-        .domain([0, nodes.length * 0.5, nodes.length])
-        .range(["#FF8F21", "#FFA021", "#FFAE21"])
+    var user_q = d3.hsl("#77E31D");
+    var topic = d3.hsl("#5E23Ad");
+    var keyword = d3.hsl("#FFA021");
 
     // Create the svg
     var chart = base.append("svg")
@@ -38,7 +34,9 @@ d3.json("data.json", function(d) {
         .attr("class", "links")
         .selectAll("line").data(links)
         .enter().append("line")
-          .attr("stroke-width", function(d) { return Math.round(d.weight * 10); });
+        .attr("stroke-width", function(d) {
+            return Math.round(d.weight * 4.16);
+        });
 
     // Create the nodes group, creates a g tag for each node
     var node = chart.append("g")
@@ -58,9 +56,9 @@ d3.json("data.json", function(d) {
         // .attr("r",function(d,i) {return links.filter(function(p){return p.source == i}).length *1.5})
         .attr("fill", function(d, i) {
             if (d.type == "keyword") {
-                return keyword(i);
+                return colorNoise(keyword);
             } else if (d.type == "topic") {
-                return topic(i);
+              return colorNoise(topic);
             } else {
                 return user_q;
             }
@@ -78,8 +76,17 @@ d3.json("data.json", function(d) {
     // Create the simulation
     var simulation = d3.forceSimulation(nodes)
         .force("charge", d3.forceManyBody())
-        .force("link", d3.forceLink(links))
+        .force("link", d3.forceLink(links).strength(function(d) {
+            if (d.source.type == "root" || d.target.type == "root" ) {
+              console.log("a");
+                return 10 * d.weight;
+            }
+            else {
+              return 20 * d.weight;
+            }
+        }))
         .on("tick", ticked);
+
     // Set size of SVG and ceter the force layout
     resize();
     d3.select(window).on("resize", resize);
@@ -157,6 +164,12 @@ d3.json("data.json", function(d) {
         simulation.force("center", d3.forceCenter(width / 2, height / 2));
         simulation.restart();
     }
+    function colorNoise(color) {
+      var inc = 10,
+      temp_colorspace = d3.hsl(color);
+      temp_colorspace.h = color.h + ( Math.floor(Math.random() * (inc - -inc)) + -inc);
+    return d3.hsl(temp_colorspace);
+}
     // End of JSON call
 }); // End of JSON call
 // End of JSON call
