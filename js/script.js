@@ -38,7 +38,7 @@ d3.json("data.json", function(d) {
         .attr("class", "links")
         .selectAll("line").data(links)
         .enter().append("line")
-          .attr("stroke-width", function(d) { return Math.round(d.weight * 10); });
+          .attr("stroke-width", function(d) { return Math.min(1, Math.round(d.weight * 10)); });
 
     // Create the nodes group, creates a g tag for each node
     var node = chart.append("g")
