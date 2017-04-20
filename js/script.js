@@ -75,11 +75,10 @@ d3.json("data.json", function(d) {
         .force("charge", d3.forceManyBody())
         .force("link", d3.forceLink(links).strength(function(d) {
             if (d.source.type == "root" || d.target.type == "root" ) {
-              console.log("a");
-                return 10 * d.weight;
+                return  d.weight;
             }
             else {
-              return 20 * d.weight;
+              return d.weight;
             }
         }))
         .on("tick", ticked);
@@ -103,6 +102,7 @@ d3.json("data.json", function(d) {
             .attr("y2", function(d) {
                 return d.target.y;
             });
+            console.log(simulation.alpha())
 
         node
             .attr("transform", function(d) {
